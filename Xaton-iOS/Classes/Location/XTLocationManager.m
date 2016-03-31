@@ -33,11 +33,6 @@ static XTLocationManager *mainLocationManager = nil;
     return mainLocationManager;
 }
 
-- (void)dealloc {
-    NSAssert(NO, @"You should not dealloc the DataManager");
-    [super dealloc];
-}
-
 - (id) init {
     self = [super init];
     
@@ -49,7 +44,6 @@ static XTLocationManager *mainLocationManager = nil;
         CLLocationManager *locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         self.locationManager = locationManager;
-        [locationManager release];
         
         //Setup MKUser
         [MKUserLocation setupLocationChange];
@@ -68,7 +62,6 @@ static XTLocationManager *mainLocationManager = nil;
                                                             errorHandler:errorHandler];
     
     [self makeRequest:req];
-    [req release];
 }
 
 #pragma mark - Private methods
@@ -245,8 +238,6 @@ static XTLocationManager *mainLocationManager = nil;
     self.errorHandler = nil;
     [self.timer invalidate];
     self.timer = nil;
-    
-    [super dealloc];
 }
 
 - (id)initWithAccuracy:(CLLocationAccuracy)accuracy
