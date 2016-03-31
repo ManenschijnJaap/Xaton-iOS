@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     'Xaton' => 'http://xaton.com'
   }
   s.source   = { :git => 'git@github.com/ManenschijnJaap/Xaton-iOS.git' }
-  s.requires_arc = false
+  s.requires_arc = true
 
 
   s.subspec 'UI' do |ui|
